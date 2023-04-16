@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { useTheme } from 'next-themes'
 
 import siteMetadata from '@/data/siteMetadata'
+import { messages } from '@/labels/site.en'
 
 const Giscus = () => {
   const [enableLoadComments, setEnabledLoadComments] = useState(true)
@@ -63,7 +64,7 @@ const Giscus = () => {
 
   return (
     <div className="pt-6 pb-6 text-center text-gray-700 dark:text-gray-300">
-      {enableLoadComments && <button onClick={LoadComments}>Load Comments</button>}
+      {enableLoadComments && <button onClick={LoadComments}>{messages.LoadComments}</button>}
       <div className="giscus" id={COMMENTS_ID} />
     </div>
   )

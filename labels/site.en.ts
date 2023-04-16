@@ -20,6 +20,7 @@ export const messages = {
   ViewOnGitHub: 'View on GitHub',
   PreviousArticle: 'Previous Article',
   NextArticle: 'Next Article',
+  LoadComments: 'Make a comment',
 }
 
 export const postLabels = {
