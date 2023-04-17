@@ -30,7 +30,7 @@ module.exports = {
       },
       fontFamily: {
         //@ts-ignore
-        sans: ['InterVariable', ...defaultTheme.fontFamily.sans],
+        sans: ['Shippori Mincho', ...defaultTheme.fontFamily.serif],
       },
       colors: {
         primary: colors.green,

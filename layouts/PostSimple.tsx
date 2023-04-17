@@ -9,6 +9,8 @@ import { ReactNode } from 'react'
 import type { Blog } from 'contentlayer/generated'
 import paths from '@/data/paths'
 import PostHeader from '@/components/PostHeader'
+import CustomLink from '@/components/Link'
+import Logo from '@/data/logo.svg'
 
 interface Props {
   content: CoreContent<Blog>
@@ -36,7 +38,7 @@ export default function PostLayout({ content, next, prev, children }: Props) {
             </div>
             <Comments frontMatter={content} />
             <footer>
-              <div className="flex flex-col text-sm font-medium sm:flex-row sm:justify-between sm:text-base">
+              <div className="justify-center flex flex-col text-sm font-medium sm:flex-row  sm:text-base">
                 {prev && (
                   <div className="pt-4 xl:pt-8">
                     <Link
@@ -47,6 +49,9 @@ export default function PostLayout({ content, next, prev, children }: Props) {
                     </Link>
                   </div>
                 )}
+                <CustomLink href="/">
+                  <Logo />
+                </CustomLink>
                 {next && (
                   <div className="pt-4 xl:pt-8">
                     <Link
