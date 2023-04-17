@@ -1,8 +1,8 @@
 const siteMetadata = {
-  title: "Sharrief's site",
+  title: "Sharrief's Journal",
   author: 'Sharrief Shabazz',
   headerTitle: 'Sharrief.com',
-  description: 'A blog not unlike any other',
+  description: 'A journal not unlike any other',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://sharrief.com',
@@ -10,7 +10,7 @@ const siteMetadata = {
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
   socialBanner: '/static/images/twitter-card.png',
-  email: 'address@yoursite.com',
+  email: 'journal@sharrief.com',
   github: 'https://github.com/sharrief',
   twitter: 'https://twitter.com/zharrief',
   facebook: 'https://facebook.com/sharrief',
@@ -38,6 +38,7 @@ const siteMetadata = {
     // https://vercel.com/docs/environment-variables
     provider: 'giscus', // supported providers: giscus, utterances, disqus
     giscusConfig: {
+      lang: 'en',
       // Visit the link below, and follow the steps in the 'configuration' section
       // https://giscus.app/
       repo: process.env.NEXT_PUBLIC_GISCUS_REPO,
@@ -58,22 +59,22 @@ const siteMetadata = {
       // example: https://giscus.app/themes/custom_example.css
       themeURL: '',
     },
-    utterancesConfig: {
-      // Visit the link below, and follow the steps in the 'configuration' section
-      // https://utteranc.es/
-      repo: process.env.NEXT_PUBLIC_UTTERANCES_REPO,
-      issueTerm: '', // supported options: pathname, url, title
-      label: '', // label (optional): Comment 💬
-      // theme example: github-light, github-dark, preferred-color-scheme
-      // github-dark-orange, icy-dark, dark-blue, photon-dark, boxy-light
-      theme: '',
-      // theme when dark mode
-      darkTheme: '',
-    },
-    disqusConfig: {
-      // https://help.disqus.com/en/articles/1717111-what-s-a-shortname
-      shortname: process.env.NEXT_PUBLIC_DISQUS_SHORTNAME,
-    },
+    // utterancesConfig: {
+    //   // Visit the link below, and follow the steps in the 'configuration' section
+    //   // https://utteranc.es/
+    //   repo: process.env.NEXT_PUBLIC_UTTERANCES_REPO,
+    //   issueTerm: '', // supported options: pathname, url, title
+    //   label: '', // label (optional): Comment 💬
+    //   // theme example: github-light, github-dark, preferred-color-scheme
+    //   // github-dark-orange, icy-dark, dark-blue, photon-dark, boxy-light
+    //   theme: '',
+    //   // theme when dark mode
+    //   darkTheme: '',
+    // },
+    // disqusConfig: {
+    //   // https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+    //   shortname: process.env.NEXT_PUBLIC_DISQUS_SHORTNAME,
+    // },
   },
 }
 

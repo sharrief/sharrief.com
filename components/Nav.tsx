@@ -1,16 +1,20 @@
 import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
+import Logo from '@/data/logo.svg'
 import Link from './Link'
 import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
-import { titles } from '@/labels/site.en'
 
 const Nav = () => {
   return (
     <header className="flex items-center justify-between py-10">
       <div>
         <Link href="/" aria-label={siteMetadata.headerTitle}>
-          <div className="flex items-center justify-between font-medium">{titles.Home}</div>
+          <div className="flex items-center justify-between font-medium">
+            <div className="mr-3">
+              <Logo />
+            </div>
+          </div>
         </Link>
       </div>
       <div className="flex items-center text-base leading-5">
