@@ -21,10 +21,13 @@ export const messages = {
   PreviousArticle: 'Previous Article',
   NextArticle: 'Next Article',
   LoadComments: 'Make a comment',
+  Tagged: 'Tagged',
 }
 
 export const postLabels = {
   PublishedOn: 'Published on',
   ReadMore: 'Read',
   BackToHome: 'Back to the homepage',
+  ReadIn: 'Read in',
+  Minutes: 'minutes',
 }

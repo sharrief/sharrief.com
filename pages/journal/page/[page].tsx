@@ -5,11 +5,11 @@ import { allCoreContent } from '@/lib/utils/contentlayer'
 import { titles } from '@/labels/site.en'
 import { POSTS_PER_PAGE } from '../../journal'
 import { InferGetStaticPropsType } from 'next'
-import { allBlogs } from 'contentlayer/generated'
+import { allEntries } from 'contentlayer/generated'
 import { sortedBlogPost } from '../../../lib/utils/contentlayer'
 
 export const getStaticPaths = async () => {
-  const totalPosts = allBlogs
+  const totalPosts = allEntries
   const totalPages = Math.ceil(totalPosts.length / POSTS_PER_PAGE)
   const paths = Array.from({ length: totalPages }, (_, i) => ({
     params: { page: (i + 1).toString() },
@@ -25,7 +25,7 @@ export const getStaticProps = async (context) => {
   const {
     params: { page },
   } = context
-  const posts = sortedBlogPost(allBlogs)
+  const posts = sortedBlogPost(allEntries)
   const pageNumber = parseInt(page as string)
   const initialDisplayPosts = posts.slice(
     POSTS_PER_PAGE * (pageNumber - 1),

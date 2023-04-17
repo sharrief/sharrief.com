@@ -4,14 +4,14 @@ import { ComponentProps, useState } from 'react'
 import Pagination from '@/components/Pagination'
 import formatDate from '@/lib/utils/formatDate'
 import { CoreContent } from '@/lib/utils/contentlayer'
-import type { Blog } from 'contentlayer/generated'
+import type { Entry } from 'contentlayer/generated'
 import paths from '@/data/paths'
 import { messages, placeholders, postLabels } from '@/labels/site.en'
 
 export interface ListProps {
-  posts: CoreContent<Blog>[]
+  posts: CoreContent<Entry>[]
   title?: string
-  initialDisplayPosts?: CoreContent<Blog>[]
+  initialDisplayPosts?: CoreContent<Entry>[]
   pagination?: ComponentProps<typeof Pagination>
 }
 

@@ -7,7 +7,7 @@ import Comments from '@/components/comments'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import { CoreContent } from '@/lib/utils/contentlayer'
 import { ReactNode } from 'react'
-import type { Blog, Authors } from 'contentlayer/generated'
+import type { Entry, Authors } from 'contentlayer/generated'
 import paths from '@/data/paths'
 import { messages, postLabels } from '@/labels/site.en'
 import PostHeader from '@/components/PostHeader'
@@ -16,7 +16,7 @@ import PostDiscussTwitter from '@/components/PostTwitter'
 import PostOnGithub from '@/components/PostOnGithub'
 
 interface Props {
-  content: CoreContent<Blog>
+  content: CoreContent<Entry>
   authorDetails: CoreContent<Authors>[]
   next?: { slug: string; title: string }
   prev?: { slug: string; title: string }

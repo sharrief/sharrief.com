@@ -6,14 +6,14 @@ import Comments from '@/components/comments'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import { CoreContent } from '@/lib/utils/contentlayer'
 import { ReactNode } from 'react'
-import type { Blog } from 'contentlayer/generated'
+import type { Entry } from 'contentlayer/generated'
 import paths from '@/data/paths'
 import PostHeader from '@/components/PostHeader'
 import CustomLink from '@/components/Link'
 import Logo from '@/data/logo.svg'
 
 interface Props {
-  content: CoreContent<Blog>
+  content: CoreContent<Entry>
   children: ReactNode
   next?: { slug: string; title: string }
   prev?: { slug: string; title: string }
@@ -30,7 +30,7 @@ export default function PostLayout({ content, next, prev, children }: Props) {
         <div>
           <PostHeader date={date} title={title} />
           <div
-            className="divide-y divide-gray-200 pb-8 dark:divide-gray-700 xl:divide-y-0 "
+            className="divide-y divide-gray-200 pb-8 dark:divide-gray-700 "
             style={{ gridTemplateRows: 'auto 1fr' }}
           >
             <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:col-span-3 xl:row-span-2 xl:pb-0">
@@ -38,7 +38,7 @@ export default function PostLayout({ content, next, prev, children }: Props) {
             </div>
             <Comments frontMatter={content} />
             <footer>
-              <div className="justify-center flex flex-col text-sm font-medium sm:flex-row  sm:text-base">
+              <div className="items-center flex flex-col text-sm font-medium sm:flex-row sm:justify-center sm:text-base">
                 {prev && (
                   <div className="pt-4 xl:pt-8">
                     <Link

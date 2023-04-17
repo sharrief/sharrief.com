@@ -19,7 +19,7 @@ export default function LandingListLayout({ posts }: ListProps) {
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
           {!posts.length && messages.NoEntriesFound}
           {posts.slice(0, MAX_DISPLAY).map((post) => {
-            const { slug, date, title, summary, tags } = post
+            const { slug, date, title, summary, tags, readingTime } = post
             return (
               <li key={slug} className="py-12">
                 <article>
@@ -42,9 +42,14 @@ export default function LandingListLayout({ posts }: ListProps) {
                             </Link>
                           </h2>
                           <div className="flex flex-wrap">
-                            {tags.map((tag) => (
-                              <Tag key={tag} text={tag} />
+                            (
+                            {tags.map((tag, i) => (
+                              <>
+                                {i > 0 && <span className="mr-1">,</span>}
+                                <Tag key={tag} text={tag} />
+                              </>
                             ))}
+                            )
                           </div>
                         </div>
                         <div className="prose max-w-none text-gray-500 dark:text-gray-400">
@@ -57,7 +62,8 @@ export default function LandingListLayout({ posts }: ListProps) {
                           className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                           aria-label={`Read "${title}"`}
                         >
-                          {postLabels.ReadMore} &rarr;
+                          {postLabels.ReadIn} {Math.ceil(readingTime.minutes)} {postLabels.Minutes}{' '}
+                          &rarr;
                         </Link>
                       </div>
                     </div>
