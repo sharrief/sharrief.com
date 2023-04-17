@@ -4,7 +4,6 @@ import GithubSlugger from 'github-slugger'
 import { escape } from './htmlEscaper.mjs'
 import siteMetadata from '../data/siteMetadata.js'
 import { allEntries } from '../.contentlayer/generated/index.mjs'
-import { paths } from '../data/paths.js'
 
 // TODO: refactor into contentlayer once compute over all docs is enabled
 export async function getAllTags() {
@@ -28,9 +27,9 @@ export async function getAllTags() {
 
 const generateRssItem = (post) => `
   <item>
-    <guid>${siteMetadata.siteUrl}/${paths.blog}/${post.slug}</guid>
+    <guid>${siteMetadata.siteUrl}/journal/${post.slug}</guid>
     <title>${escape(post.title)}</title>
-    <link>${siteMetadata.siteUrl}/${paths.blog}/${post.slug}</link>
+    <link>${siteMetadata.siteUrl}/journal/${post.slug}</link>
     ${post.summary && `<description>${escape(post.summary)}</description>`}
     <pubDate>${new Date(post.date).toUTCString()}</pubDate>
     <author>${siteMetadata.email} (${siteMetadata.author})</author>
