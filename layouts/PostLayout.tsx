@@ -12,8 +12,7 @@ import paths from '@/data/paths'
 import { messages, postLabels } from '@/labels/site.en'
 import PostHeader from '@/components/PostHeader'
 import PostAuthorBox from '@/components/PostAuthorBox'
-import PostDiscussTwitter from '@/components/PostTwitter'
-import PostOnGithub from '@/components/PostOnGithub'
+import Tags from '@/data/tags'
 
 interface Props {
   content: CoreContent<Entry>
@@ -25,6 +24,7 @@ interface Props {
 
 export default function PostLayout({ content, authorDetails, next, prev, children }: Props) {
   const { slug, date, title, tags } = content
+  const fontClass = tags.includes(Tags.Journal) ? 'font-serif' : ''
 
   return (
     <SectionContainer>
@@ -36,18 +36,15 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
       <ScrollTopAndComment />
       <article>
         <div>
-          <PostHeader date={date} title={title} />
+          <PostHeader date={date} title={title} tags={tags} />
           <div
             className="divide-y divide-gray-200 pb-8 dark:divide-gray-700 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0"
             style={{ gridTemplateRows: 'auto 1fr' }}
           >
             <PostAuthorBox authors={authorDetails} />
             <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:col-span-3 xl:row-span-2 xl:pb-0">
-              <div className="prose max-w-none pt-10 pb-8 dark:prose-dark">{children}</div>
-              <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
-                <PostDiscussTwitter slug={slug} />
-                {` • `}
-                <PostOnGithub slug={slug} />
+              <div className={`prose-lg ${fontClass} max-w-none pt-10 pb-8 dark:prose-dark`}>
+                {children}
               </div>
               <Comments frontMatter={content} />
             </div>
@@ -60,7 +57,9 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                     </h2>
                     <div className="flex flex-wrap">
                       {tags.map((tag) => (
-                        <Tag key={tag} text={tag} />
+                        <div key={tag} className="mr-3">
+                          <Tag text={tag} />
+                        </div>
                       ))}
                     </div>
                   </div>

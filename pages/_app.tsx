@@ -2,7 +2,8 @@ import '@/css/tailwind.css'
 import '@/css/prism.css'
 import 'katex/dist/katex.css'
 
-import '@fontsource/shippori-mincho'
+import '@fontsource/lora'
+import '@fontsource/open-sans'
 
 import { ThemeProvider } from 'next-themes'
 import type { AppProps } from 'next/app'

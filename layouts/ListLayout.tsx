@@ -7,6 +7,7 @@ import { CoreContent } from '@/lib/utils/contentlayer'
 import type { Entry } from 'contentlayer/generated'
 import paths from '@/data/paths'
 import { messages, placeholders, postLabels } from '@/labels/site.en'
+import Tags from '@/data/tags'
 
 export interface ListProps {
   posts: CoreContent<Entry>[]
@@ -68,6 +69,7 @@ export default function ListLayout({
           {!filteredBlogPosts.length && messages.NoEntriesFound}
           {displayPosts.map((post) => {
             const { slug, date, title, summary, tags } = post
+            const fontClass = tags.includes(Tags.Journal) ? 'font-serif' : ''
             return (
               <li key={slug} className="py-4">
                 <article className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
@@ -82,18 +84,22 @@ export default function ListLayout({
                       <h3 className="text-2xl font-bold leading-8 tracking-tight">
                         <Link
                           href={`/${paths.blog}/${slug}`}
-                          className="text-gray-900 dark:text-gray-100"
+                          className={`${fontClass} text-gray-900 dark:text-gray-100`}
                         >
                           {title}
                         </Link>
                       </h3>
                       <div className="flex flex-wrap">
                         {tags.map((tag) => (
-                          <Tag key={tag} text={tag} />
+                          <div key={tag} className="mr-3">
+                            <Tag text={tag} />
+                          </div>
                         ))}
                       </div>
                     </div>
-                    <div className="prose max-w-none text-gray-500 dark:text-gray-400">
+                    <div
+                      className={`prose ${fontClass} max-w-none text-gray-500 dark:text-gray-400`}
+                    >
                       {summary}
                     </div>
                   </div>
