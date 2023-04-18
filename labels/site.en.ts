@@ -1,6 +1,6 @@
 export const titles = {
   Home: 'Sharrief.com',
-  LandingPageTitle: 'Journal',
+  LandingPageTitle: 'Latest',
   BlogPostTitle: 'All entries',
   LandingListLayoutTitle: 'Latest entries',
 }

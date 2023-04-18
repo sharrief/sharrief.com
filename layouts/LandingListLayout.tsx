@@ -4,6 +4,7 @@ import formatDate from '@/lib/utils/formatDate'
 import { ListProps } from './ListLayout'
 import { messages, postLabels, titles } from '@/labels/site.en'
 import paths from '@/data/paths'
+import Tags from '@/data/tags'
 
 const MAX_DISPLAY = 5
 
@@ -20,6 +21,7 @@ export default function LandingListLayout({ posts }: ListProps) {
           {!posts.length && messages.NoEntriesFound}
           {posts.slice(0, MAX_DISPLAY).map((post) => {
             const { slug, date, title, summary, tags, readingTime } = post
+            const fontClass = tags.includes(Tags.Journal) ? 'font-serif' : ''
             return (
               <li key={slug} className="py-12">
                 <article>
@@ -36,7 +38,7 @@ export default function LandingListLayout({ posts }: ListProps) {
                           <h2 className="text-2xl font-bold leading-8 tracking-tight">
                             <Link
                               href={`/${paths.blog}/${slug}`}
-                              className="text-gray-900 dark:text-gray-100"
+                              className={`${fontClass} text-gray-900 dark:text-gray-100`}
                             >
                               {title}
                             </Link>
@@ -44,15 +46,17 @@ export default function LandingListLayout({ posts }: ListProps) {
                           <div className="flex flex-wrap">
                             (
                             {tags.map((tag, i) => (
-                              <>
+                              <div key={tag}>
                                 {i > 0 && <span className="mr-1">,</span>}
-                                <Tag key={tag} text={tag} />
-                              </>
+                                <Tag text={tag} />
+                              </div>
                             ))}
                             )
                           </div>
                         </div>
-                        <div className="prose max-w-none text-gray-500 dark:text-gray-400">
+                        <div
+                          className={`prose ${fontClass} max-w-none text-gray-500 dark:text-gray-400`}
+                        >
                           {summary}
                         </div>
                       </div>

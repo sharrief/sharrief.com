@@ -30,7 +30,8 @@ module.exports = {
       },
       fontFamily: {
         //@ts-ignore
-        sans: ['Shippori Mincho', ...defaultTheme.fontFamily.serif],
+        sans: ['Open-sans', ...defaultTheme.fontFamily.sans],
+        serif: ['Lora', ...defaultTheme.fontFamily.serif],
       },
       colors: {
         primary: colors.green,
