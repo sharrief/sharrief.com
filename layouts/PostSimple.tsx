@@ -11,6 +11,7 @@ import paths from '@/data/paths'
 import PostHeader from '@/components/PostHeader'
 import CustomLink from '@/components/Link'
 import Logo from '@/data/logo.svg'
+import Tags from '@/data/tags'
 
 interface Props {
   content: CoreContent<Entry>
@@ -20,7 +21,8 @@ interface Props {
 }
 
 export default function PostLayout({ content, next, prev, children }: Props) {
-  const { slug, date, title } = content
+  const { slug, date, title, tags } = content
+  const fontClass = tags.includes(Tags.Journal) ? 'font-serif' : ''
 
   return (
     <SectionContainer>
@@ -28,13 +30,15 @@ export default function PostLayout({ content, next, prev, children }: Props) {
       <ScrollTopAndComment />
       <article>
         <div>
-          <PostHeader date={date} title={title} />
+          <PostHeader date={date} title={title} tags={tags} />
           <div
             className="divide-y divide-gray-200 pb-8 dark:divide-gray-700 "
             style={{ gridTemplateRows: 'auto 1fr' }}
           >
             <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:col-span-3 xl:row-span-2 xl:pb-0">
-              <div className="prose max-w-none pt-10 pb-8 dark:prose-dark">{children}</div>
+              <div className={`prose-lg ${fontClass} max-w-none pt-10 pb-8 dark:prose-dark`}>
+                {children}
+              </div>
             </div>
             <Comments frontMatter={content} />
             <footer>

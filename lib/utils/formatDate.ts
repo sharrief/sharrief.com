@@ -6,6 +6,10 @@ const formatDate = (date: string) => {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: true,
+    timeZoneName: 'short',
   }
   const now = new Date(date).toLocaleDateString(siteMetadata.locale, options)
 

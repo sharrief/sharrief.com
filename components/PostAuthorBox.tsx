@@ -29,12 +29,12 @@ export default function PostAuthorBox({ authors }: Props) {
                 <dd className="text-gray-900 dark:text-gray-100">{author.name}</dd>
                 <dt className="sr-only">Twitter</dt>
                 <dd>
-                  {author.twitter && (
+                  {author.mastodon && (
                     <Link
-                      href={author.twitter}
+                      href={author.mastodon}
                       className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                     >
-                      {author.twitter.replace('https://twitter.com/', '@')}
+                      {author.mastodon.replace(/https:\/\/[a-zA-Z\\.]*\//, '')}
                     </Link>
                   )}
                 </dd>
